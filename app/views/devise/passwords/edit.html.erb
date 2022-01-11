@@ -1,0 +1,55 @@
+<html>
+ <head>
+   <style>
+   input,
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: primary;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+  color:btn btn-primary;
+}
+
+</style>
+
+ </head>
+ <body>
+<div class="container h-100 ">
+<div class="row h-100 justify-content-center align-items-center">
+<div class="col-10 col-md-8 col-lg-6">
+<h2 class="text-center text-primary">Change your password</h2> <hr><br/>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="field">
+    <%= f.label :password, "New password" %><br />
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+    <% end %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirm new password" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+   </br>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <%= f.submit "Change my password" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
+</body>
+</html>

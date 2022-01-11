@@ -1,0 +1,20 @@
+
+<h1 class="text-center text-primary">Albums Listing</h1>
+<%= link_to  "New Album", new_album_path , class: "btn btn-small btn-primary " %>  
+<hr/>
+<%= form_tag albums_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search" %>
+<% end %>
+<br/>
+
+<ul>
+  <% @albums.each do |album| %>
+    <li>
+    
+      <%= link_to album.id, album %>      
+       <%= link_to album.name, album %>      
+    </li>
+  <% end %>
+
+</ul>

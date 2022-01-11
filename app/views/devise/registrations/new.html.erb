@@ -1,0 +1,60 @@
+<html>
+ <head>
+   <style>
+   input,
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: primary;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+  color:btn btn-primary;
+}
+
+</style>
+
+ </head>
+ <body>
+<div class="container h-100 ">
+<div class="row h-100 justify-content-center align-items-center">
+<div class="col-10 col-md-8 col-lg-6">
+
+<h2 class= "text-center text-primary">Sign up</h2><hr>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  <br/>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
+</body>
+</html>

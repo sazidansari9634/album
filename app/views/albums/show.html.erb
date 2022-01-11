@@ -1,0 +1,34 @@
+<h1 class= "text-center text-primary"> View Information</h1> <hr>
+
+<h1>
+<strong> Name:- </strong>
+<%= @album.name %></h1>
+
+<p>
+<strong> Description:- </strong>
+
+<%= @album.description %></p>
+     
+  
+  <p>
+  <strong> Images:- </strong>
+    <% if @album.images.attached? %>
+     <% @album.images.each do |attachment| %>
+      <% if attachment.image? %>
+        <%= image_tag attachment, width: "100px" %>
+        <%= link_to "Delete Image", purge_attachment_path(attachment),method: :delete ,   class: "btn btn-danger " %>
+
+      <% end %>
+   <% end %>
+<% end %>
+</p>
+
+
+<ul>
+  <li><%= link_to "Edit", edit_album_path(@album) ,  class: "btn btn-info " %></li> <br/>
+  <li><%= link_to "Destroy", album_path(@album), method: :delete, data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } ,  class: "btn btn-danger " %></li>
+</ul>
+

@@ -1,0 +1,63 @@
+<html>
+<head>
+  <style>
+ 
+  input,
+.btn {
+ width: 100%;
+ padding: 12px;
+ border: primary;
+ border-radius: 4px;
+ margin: 5px 0;
+ opacity: 0.85;
+ display: inline-block;
+ font-size: 17px;
+ line-height: 20px;
+ text-decoration: none; /* remove underline from anchors */
+}
+
+
+</style>
+
+</head>
+<body>
+<div class="container h-100 ">
+
+<%= form_with model: album do |form| %>
+    <div class="field">
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+      <% album.errors.full_messages_for(:name).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :description %><br>
+      <%= form.text_area :description %><br>
+      <% album.errors.full_messages_for(:description).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+   
+
+
+  <div class="field">
+    <%= form.label :Images %><br>
+    <%= form.file_field :images, multiple: true %><br>
+    <% album.errors.full_messages_for(:Images).each do |message| %>
+    <div><%= message %></div>
+    <% end %>
+  </div>
+   <br/>
+   <br/>
+
+   <div class="d-grid gap-2 col-2 mx-auto">
+   <%= form.submit  %>
+    </div>
+  <% end %>
+  </div>
+  </div>
+  </div>
+  
